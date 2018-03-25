@@ -9,9 +9,11 @@
   "author": "Gregoire Albizzati",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "elasticsearch": "^14.2.1",
     "express": "^4.16.3",
     "node-car-api": "github:92bondstreet/node-car-api",
-    "node-fetch": "^2.1.1"
+    "node-fetch": "^2.1.1",
+    "npm": "^5.8.0"
   }
 }

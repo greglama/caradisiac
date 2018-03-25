@@ -73,7 +73,7 @@ const creatIndex = async indexName =>{
  * @param {object} document 
  * Index a document in elasticSearch
  */
-const indexDocument = async (index, type, document) =>{
+const indexDocument = async (index, type, document) =>{    
     const result = await elasticClient.index({
         index:index,
         id: document.uuid,
