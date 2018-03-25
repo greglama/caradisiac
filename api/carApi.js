@@ -48,10 +48,20 @@ const creatIndex = async indexName =>{
     try
     {
         const result = await elasticClient.indices.create({index: indexName});
+        console.log("index has been successfuly added to elasticSearch");
         return result;
     }
     catch(err)
     {
+        if(err.body.error.type === "resource_already_exists_exception")
+        {
+            console.log("This index already exists, it will not be add");
+        }
+        else
+        {
+            console.log("An error has occured : ")
+            console.log(err);
+        }
         return err;
     }
 }
