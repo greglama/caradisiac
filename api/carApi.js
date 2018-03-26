@@ -8,6 +8,23 @@ const {getModels} = require('node-car-api');
 const INDEX_NAME = "models";
 const TYPE_NAME = "model";
 
+const get10BiggestVolume = async () =>{
+    
+    const result = await elasticClient.search({
+        index: INDEX_NAME,
+        type: TYPE_NAME,
+        body: {
+            query: {
+                range:{volume: {gte: 0}}},
+             sort: { volume: { order: "desc"}}
+        }
+    }/*, function (err) {
+        console.trace(err);
+    }*/);
+
+    return result;
+}
+
 /**
  * @param {number} sizeOfPacket 
  * fetches all the models and send queries by packet of a defined size
@@ -147,6 +164,7 @@ const getFetchedData = async (path) => JSON.parse(fs.readFileSync(path, "utf-8")
 module.exports = {
     INDEX_NAME: INDEX_NAME,
     TYPE_NAME: TYPE_NAME,
+    get10BiggestVolume: get10BiggestVolume,
     fetchAllModels: fetchAllModels,
     creatIndex: creatIndex,
     indexDocument: indexDocument,

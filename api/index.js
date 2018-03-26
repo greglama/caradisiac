@@ -10,8 +10,10 @@ app.get('/', (request, response) => {
     response.sendFile("index.html"); // help page ? it might be nice to have a Jdoc over there
 });
 
-app.get('/cars',  (request, response) => {
-    //TODO
+app.get('/cars',  async (request, response) => {
+    const result = await carApi.get10BiggestVolume();
+    const hits = result.hits.hits.map(hit => hit._source);
+    response.json(hits);
 });
 
 //add only one model to the data base
@@ -50,7 +52,7 @@ const initDataBase = async() =>{
 
         //change the volume from string to int
         const formatData = fetchedData.map(model =>{
-            if(model.volume == "")
+            if(model.volume === "")
             {
                 model.volume = 0;
             }
