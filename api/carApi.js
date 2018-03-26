@@ -113,7 +113,6 @@ const indexArrayOfDocument = async (index, type, documents) =>{
         if(documents.length - indx < packetSize)
         {
             packetSize = documents.length - indx;
-            console.log(packetSize);
         }
 
         for(let i = 0; i < packetSize; i++)
@@ -124,9 +123,9 @@ const indexArrayOfDocument = async (index, type, documents) =>{
 
         const results = await Promise.all(arrayDoc);
 
-        resultatsArray.concat(results);
+        resultatsArray = resultatsArray.concat(results);
 
-        console.log(String(indx) + "/" + String(documents.length - 1));
+        console.log(String(indx) + "/" + String(documents.length));
     }
 
     return resultatsArray;
