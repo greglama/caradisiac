@@ -24,7 +24,7 @@ The server will start, and will :
  
  It provides three endpoints:
  
- `POST /populate` which will add to the database a given model
- `POST /populateArray` which will add to the database a given array of models
- `GET /cars` which will return the 10 cars with the highest volume
+ `POST /populate` which will add to the database a given model<br>
+ `POST /populateArray` which will add to the database a given array of models<br>
+ `GET /cars` which will return the 10 cars with the highest volume<br>
  
